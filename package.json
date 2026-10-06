@@ -1,5 +1,5 @@
 {
-  "name": "ecommerce-api-newman",
+  "name": "ecommerce-api-postman-newman",
   "version": "1.0.0",
   "private": true,
   "description": "Postman collections for the e-commerce REST API, run with Newman",
