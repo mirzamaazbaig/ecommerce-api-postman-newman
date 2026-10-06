@@ -1,0 +1,9 @@
+scenario,email,password,expectedStatus
+valid registration,<unique>,TestPass123!,201
+malformed email: no at sign,not-an-email,TestPass123!,400
+malformed email: no domain,user@,TestPass123!,400
+malformed email: spaces,user name@example.com,TestPass123!,400
+empty email,,TestPass123!,400
+missing email,<missing>,TestPass123!,400
+empty password,<unique>,,400
+missing password,<unique>,<missing>,400

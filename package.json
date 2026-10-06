@@ -1,0 +1,15 @@
+{
+  "name": "ecommerce-api-newman",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Postman collections for the e-commerce REST API, run with Newman",
+  "scripts": {
+    "test": "newman run collections/ecommerce-api.postman_collection.json -e environments/local.postman_environment.json -r cli,htmlextra --reporter-htmlextra-export reports/api-flow.html --reporter-htmlextra-title \"E-Commerce API flow\"",
+    "test:data": "newman run collections/registration-validation.postman_collection.json -e environments/local.postman_environment.json -d data/registration-validation.csv -r cli,htmlextra --reporter-htmlextra-export reports/registration-validation.html --reporter-htmlextra-title \"Registration validation\"",
+    "test:all": "npm run test && npm run test:data"
+  },
+  "devDependencies": {
+    "newman": "^6.2.2",
+    "newman-reporter-htmlextra": "^1.23.1"
+  }
+}

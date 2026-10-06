@@ -1,0 +1,71 @@
+{
+  "info": {
+    "name": "E-Commerce API: registration validation (data-driven)",
+    "description": "One request, run once per row of data/registration-validation.csv.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:5000/api"
+    }
+  ],
+  "item": [
+    {
+      "name": "POST /auth/register with each data row",
+      "event": [
+        {
+          "listen": "prerequest",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "// Build the request body from the CSV row. '<unique>' becomes a fresh email, '<missing>' leaves the field out.",
+              "const body = {};",
+              "const email = pm.iterationData.get('email');",
+              "const password = pm.iterationData.get('password');",
+              "if (email === '<unique>') { body.email = `dd_${Date.now()}_${Math.floor(Math.random() * 1e6)}@example.com`; }",
+              "else if (email !== '<missing>') { body.email = email; }",
+              "if (password !== '<missing>') { body.password = password; }",
+              "pm.variables.set('requestBody', JSON.stringify(body));"
+            ]
+          }
+        },
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "const expected = Number(pm.iterationData.get('expectedStatus'));",
+              "const scenario = pm.iterationData.get('scenario');",
+              "pm.test(`${scenario}: status is ${expected}`, () => pm.expect(pm.response.code).to.eql(expected));",
+              "pm.test(`${scenario}: error responses carry a message, success responses a user`, () => {",
+              "    const body = pm.response.json();",
+              "    if (expected >= 400) { pm.expect(body.message).to.be.a('string').and.not.empty; }",
+              "    else { pm.expect(body.user.id).to.be.a('number'); }",
+              "});"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{baseUrl}}/auth/register",
+        "body": {
+          "mode": "raw",
+          "raw": "{{requestBody}}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    }
+  ]
+}
