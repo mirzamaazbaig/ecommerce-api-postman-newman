@@ -19,9 +19,8 @@ permissions:
   contents: read
 
 env:
-  # The collection asserts the validated, fixed behaviour of the API, so it must run against a version of the
-  # application that has those fixes. Change this to the application's default branch once the fixes are merged there.
-  ECOM_REF: claude/optimistic-faraday-sh5c40
+  # The application branch under test. The tests assert the fixed behaviour, so the application's fixes must be merged here.
+  ECOM_REF: feature/modern-upgrade
 
 jobs:
   newman:
