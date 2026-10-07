@@ -19,8 +19,8 @@ permissions:
   contents: read
 
 env:
-  # The application branch under test. The tests assert the fixed behaviour, so this must be a branch that contains the application's fixes. Change it to the default branch once the fixes are merged there.
-  ECOM_REF: qa-test-automation
+  # The application branch under test. Empty means the default branch of the application repository.
+  ECOM_REF: ''
 
 jobs:
   newman:
