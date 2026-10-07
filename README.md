@@ -4,7 +4,7 @@
 
 Postman collections for the REST API of a React, Express and PostgreSQL online shop, run from the command line with Newman and in GitHub Actions. They check functional behaviour, authorisation, input validation and data integrity, and they can be imported straight into the Postman app for exploratory work.
 
-The API is the same one tested in the [Playwright suite](https://github.com/mirzamaazbaig/Ecom). This repository shows the same checks the way a Postman and Newman team would write them.
+The API is the same one tested in the [Playwright suite](https://github.com/mirzamaazbaig/ecommerce-test-automation). This repository shows the same checks the way a Postman and Newman team would write them.
 
 | | Count |
 |---|---|
@@ -27,7 +27,7 @@ The API is the same one tested in the [Playwright suite](https://github.com/mirz
 | 7. Access control: customer | A signed-in customer gets 403 on admin endpoints and cannot change a price |
 | Registration validation (data-driven) | One request run once per row of [`data/registration-validation.csv`](data/registration-validation.csv): valid, malformed emails, empty and missing fields |
 
-Several of these checks pin defects that were found in the application and fixed; see its [defect log](https://github.com/mirzamaazbaig/Ecom/blob/feature/modern-upgrade/docs/KNOWN_DEFECTS.md). Run against the application as it was before the fixes, the main collection fails 15 assertions and the data-driven run fails 7 of 16, which is what these tests are for.
+Several of these checks pin defects that were found in the application and fixed; see its [defect log](https://github.com/mirzamaazbaig/ecommerce-test-automation/blob/qa-test-automation/docs/KNOWN_DEFECTS.md). Run against the application as it was before the fixes, the main collection fails 15 assertions and the data-driven run fails 7 of 16, which is what these tests are for.
 
 ## How the collection is built
 
