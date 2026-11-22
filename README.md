@@ -2,6 +2,8 @@
 
 [![API tests](https://github.com/mirzamaazbaig/ecommerce-api-postman-newman/actions/workflows/api-tests.yml/badge.svg)](https://github.com/mirzamaazbaig/ecommerce-api-postman-newman/actions/workflows/api-tests.yml)
 
+![CI run: all jobs passing](docs/images/ci-run.png)
+
 Postman collections for the REST API of a React, Express and PostgreSQL online shop, run from the command line with Newman and in GitHub Actions. They check functional behaviour, authorisation, input validation and data integrity, and they can be imported straight into the Postman app for exploratory work.
 
 The API is the same one tested in the [Playwright suite](https://github.com/mirzamaazbaig/ecommerce-playwright-e2e-tests). This repository shows the same checks the way a Postman and Newman team would write them.
